@@ -37,7 +37,7 @@ for tr in tabel.find_all('tr'):
     regel['samenvatting'] = summary
     items = div.find_all('div', attrs={'class': 'credit_summary_item'})
     regel['director'] = items[0].text.replace('Director:','').strip()
-    regel['acteurs'] = items[2].text.replace('Stars:','').replace('See full cast & crew','').replace('»','').replace('|','').strip()
+    regel['acteurs'] = items[2].text.replace('Stars:','').replace('See full cast & crew','').replace('»','').replace('|','').strip().split(', ')
     data.append(regel)
 
 df = pd.DataFrame(data)
